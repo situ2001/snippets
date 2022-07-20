@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Float playground</title>
+    <style>
+      :root {
+        box-sizing: border-box;
+      }
+
+      *,
+      ::after,
+      ::before {
+        box-sizing: inherit;
+      }
+
+      body {
+        margin: 0;
+      }
+
+      #floating-div {
+        float: right;
+        width: 25vmin;
+        height: 25vmin;
+        border: 1px black solid;
+        margin: 0.5em;
+        text-transform: uppercase;
+      }
+
+      article {
+        line-height: 1.25;
+        font-size: 1em;
+      }
+
+      article::first-letter {
+        text-transform: uppercase;
+        font-size: 3rem;
+        padding: 0 0.25rem;
+      }
+
+      #background-test {
+        background: pink;
+      }
+
+      .clearfix::after {
+        content: " ";
+        display: block;
+        clear: both;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <article>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis bibendum
+        nibh ipsum, ut suscipit arcu vehicula et. Ut tempor ac eros id lacinia.
+        Curabitur varius ante id feugiat convallis. Suspendisse nec odio ac sem
+        tempor eleifend at ut tellus. Aliquam aliquam justo quis quam vulputate,
+        nec vehicula est elementum. Vivamus a elit id nulla laoreet vehicula non
+        vel urna. Aliquam aliquam lobortis magna, ut auctor metus imperdiet ut.
+        Duis neque ante, cursus vel euismod et, tincidunt nec odio. Morbi
+        blandit interdum tincidunt. Proin cursus felis in nibh ornare, eget
+        vulputate tellus blandit. Ut molestie orci in elit pretium, sed dapibus
+        enim ornare.
+      </article>
+      <article class="clearfix" id="background-test">
+        This is a background
+        <div id="floating-div">This is a floating block</div>
+        <div id="floating-div">This is a floating block</div>
+      </article>
+      <article>
+        Nunc egestas odio justo, vel fermentum ligula vulputate eget. Phasellus
+        mattis eu ante nec venenatis. Etiam eget fermentum enim. Suspendisse
+        potenti. Duis maximus feugiat magna ac feugiat. Duis in erat eu massa
+        sagittis tempus. Vivamus consectetur sem lorem, non mattis ligula
+        consequat ut. Proin lectus nibh, imperdiet nec est eu, scelerisque
+        tristique arcu. Ut quis urna at dui molestie suscipit pulvinar tincidunt
+        ex. Sed pellentesque turpis purus, quis tincidunt velit tincidunt non.
+        Integer mattis accumsan sem, eget commodo metus laoreet commodo.
+        Vestibulum et tristique nibh. Pellentesque erat massa, scelerisque in
+        nibh vel, tincidunt gravida tellus. Aenean vehicula sodales vehicula.
+      </article>
+    </main>
+  </body>
+</html>

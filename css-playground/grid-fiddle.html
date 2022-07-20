@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grid Fiddle</title>
+    <style>
+      :root {
+        box-sizing: border-box;
+      }
+
+      *,
+      ::after,
+      ::before {
+        box-sizing: inherit;
+      }
+
+      .container {
+        display: grid;
+        width: 80vmin;
+        height: 80vmin;
+        margin: auto;
+        grid-template-rows: repeat(7, 1fr);
+        grid-template-columns: repeat(7, 1fr);
+      }
+
+      .main {
+        grid-column: 3 / span 3;
+        grid-row: 3 / span 3;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border: 1px black solid;
+      }
+
+      .child {
+        border: 1px pink solid;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <main class="main"><div class="child">Hello I am main.</div></main>
+    </div>
+  </body>
+</html>

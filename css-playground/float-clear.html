@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clear float</title>
+    <style>
+      :root {
+        box-sizing: border-box;
+      }
+
+      *,
+      ::after,
+      ::before {
+        box-sizing: inherit;
+      }
+
+      article {
+        border: 0.2em pink solid;
+      }
+
+      .clear-left {
+        clear: left;
+      }
+
+      .clear-right {
+        clear: right;
+      }
+
+      .clear-both {
+        clear: both;
+      }
+
+      .clear-none {
+        clear: none;
+      }
+
+      .floating-item {
+        border: 0.05em black solid;
+        text-transform: uppercase;
+        margin: 0.2em;
+        word-break: break-all;
+      }
+
+      .float-left {
+        float: left;
+        width: 20vmin;
+        height: 20vmin;
+      }
+
+      .float-right {
+        float: right;
+        width: 20vmin;
+        height: 35vmin;
+      }
+
+      #btn-group {
+        margin: 0.5em 0;
+      }
+
+      button + button {
+        margin-left: 0.3rem;
+      }
+    </style>
+    <script type="module">
+      class ButtonGroup {
+        constructor() {
+          this.selected = 0;
+          this.targetElement = document.querySelector("#my-article");
+          console.log(this.targetElement);
+          this.group = document.querySelector("#btn-group");
+          this.group.addEventListener("click", () => {
+            console.log("Clicked");
+            this.group.childNodes.forEach((c, i) =>
+              this.selected === i
+                ? (c.style.fontWeight = 700)
+                : (c.style.fontWeight = 500)
+            );
+          });
+          this.buttons = ["none", "left", "right", "both"].map((str, i) => {
+            const elem = document.createElement("button");
+            elem.innerText = str;
+            elem.addEventListener("click", () => {
+              this.selected = i;
+              this.applyClass();
+            });
+            return elem;
+          });
+          this.buttons.forEach((b) => this.group.appendChild(b));
+          this.buttons[this.selected].dispatchEvent(
+            new Event("click", {
+              bubbles: true,
+            })
+          );
+          console.log(this.buttons);
+        }
+
+        // apply class to article
+        applyClass() {
+          const cls = `clear-${this.buttons[this.selected].innerText}`;
+          console.log(cls);
+          this.targetElement.className = cls;
+        }
+      }
+
+      const group = new ButtonGroup();
+    </script>
+  </head>
+  <body>
+    <h2>
+      Floating blocks which are affected after applying float clearance on
+      target block are the blocks before this target.
+    </h2>
+    <div id="btn-group"></div>
+    <section>
+      <div class="floating-item float-left">left (affected)</div>
+      <div class="floating-item float-right">right (affected)</div>
+      <article id="my-article">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis bibendum
+        nibh ipsum, ut suscipit arcu vehicula et. Ut tempor ac eros id lacinia.
+        Curabitur varius ante id feugiat convallis. Suspendisse nec odio ac sem
+        tempor eleifend at ut tellus. Aliquam aliquam justo quis quam vulputate,
+        nec vehicula est elementum. Vivamus a elit id nulla laoreet vehicula non
+        vel urna. Aliquam aliquam lobortis magna, ut auctor metus imperdiet ut.
+        Duis neque ante, cursus vel euismod et, tincidunt nec odio. Morbi
+        blandit interdum tincidunt. Proin cursus felis in nibh ornare, eget
+        vulputate tellus blandit. Ut molestie orci in elit pretium, sed dapibus
+        enim ornare.
+      </article>
+      <div class="floating-item float-left">float left (not affect)</div>
+      <div class="floating-item float-right">float right (not affect)</div>
+    </section>
+  </body>
+</html>

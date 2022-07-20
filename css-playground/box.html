@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Box</title>
+    <style>
+      body > div {
+        border: 1px black solid;
+        padding: 0.5em 1em;
+      }
+
+      body > * + * {
+        margin-top: 1em;
+      }
+
+      body > :nth-child(2) {
+        width: fit-content;
+      }
+
+      body > :nth-child(3)::before {
+        text-decoration: underline;
+        text-transform: uppercase;
+        content: "Hello";
+      }
+
+      body > :nth-child(3) + div {
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        text-transform: uppercase;
+      }
+    </style>
+  </head>
+  <body>
+    <div>This is a CSS box</div>
+    <div>This is a CSS box</div>
+    <div>This is a CSS box</div>
+    <div>This is a CSS box</div>
+    <div>This is a CSS box</div>
+  </body>
+</html>
